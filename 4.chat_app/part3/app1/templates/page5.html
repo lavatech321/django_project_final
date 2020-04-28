@@ -1,0 +1,63 @@
+
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    
+    <nav aria-label="breadcrumb" class="py-2">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+
+
+    <div class="container">
+    
+    <div class="form-group">
+      <label for="">Message: </label>
+        <textarea class="form-control" name="" id="" rows="3"></textarea>
+      <a href="#" class="btn btn-primary my-4">Add Comment</a>
+    </div>
+
+    
+        <div class="card text-center mb-2">
+        <div class="d-flex justify-content-between">
+            <div>
+            <img class="card-img-left" src="{% static 'img/icon.png' %}" width="150" height='150'>
+            <p class="card-text">Comment: 1</p>
+            </div>
+          <div class="card-body text-left">
+            <h3 class="card-title">Jack</h3>
+            <h5 class="card-text py-3">This is testing block, ...... another new test!</h5>
+            <a href="" class="btn btn-primary" >Edit</a>
+          </div>
+          <div class="card-body">
+                <p class="text-muted">12 mins ago</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="card text-center mb-2">
+                <div class="d-flex justify-content-between">
+                    <div>
+                    <img class="card-img-left" src="{% static 'img/icon.png' %}" width="150" height='150'>
+                    <p class="card-text">Comment: 1</p>
+                    </div>
+                  <div class="card-body text-left">
+                    <h3 class="card-title">Jack</h3>
+                    <h5 class="card-text py-3">This is testing block, ...... another new test!</h5>
+                    <a href="" class="btn btn-primary" >Edit</a>
+                  </div>
+                  <div class="card-body">
+                        <p class="text-muted">12 mins ago</p>
+                    </div>
+               </div>
+        </div>
+        
+    </div>
+  </main>
+
+  {% endblock %}

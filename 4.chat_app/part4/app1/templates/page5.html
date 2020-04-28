@@ -1,0 +1,56 @@
+
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    
+  <nav aria-label="breadcrumb" class="py-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'page1' %}">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'page2' teamname=teamname %}">{{ teamname }}</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'page4' teamname=teamname topic=id_topic %}">{{ topic }}</a></li>
+      <li class="breadcrumb-item active">Post A Reply</li>
+    </ol>
+</nav>
+
+
+    <div class="container">
+      
+      <!-- <form action='{% url "page3" tname=teamname %}' method='POST'>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Add Topic</button>
+      </form> -->
+
+    <form action='{% url "add_comment" tname=teamname topic=id_topic %}' method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Add Comment</button>
+    </form>
+    <br>
+    
+    {% for x in comments %}
+        <div class="card text-center mb-2">
+        <div class="d-flex justify-content-between">
+            <div>
+            <img class="card-img-left" src="{% static 'img/icon.png' %}" width="150" height='150'>
+            <p class="card-text">Comment: 1</p>
+            </div>
+          <div class="card-body text-left">
+            <h3 class="card-title">{{ x.updated_by }}</h3>
+            <h5 class="card-text py-3">{{ x.message }}</h5>
+            <a href="" class="btn btn-primary" >Edit</a>
+          </div>
+          <div class="card-body">
+                <p class="text-muted">{{ x.updated_at }}</p>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+        
+    </div>
+  </main>
+
+  {% endblock %}

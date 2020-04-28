@@ -1,0 +1,46 @@
+
+{% extends 'home.html' %}
+{% block content %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    
+    <nav aria-label="breadcrumb" class="py-2">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'page1' %}">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ teamname }}</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+    <a href="{% url 'page3' tname=teamname %}" class="btn btn-primary my-4">Start Topic</a>
+    <div class="table-responsive">
+      <table class="table table-striped table-dark table-lg">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Topic</th>
+            <th>Starter</th>
+            <th>Comments</th>
+            <th>Last Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in topics %}
+          <tr>
+            <td>{{ x.pk }}</td>
+            <td><a href='{% url "page4" teamname=teamname topic=x.pk %}'>{{ x.subject }}</a></td>
+            <td>{{ x.starter.username }}</td>
+            <td>{{ x.comment_set.count }}</td>
+            <td class="text-warning">{{ x.last_updated }}</td>            
+          </tr>
+          {% empty %}
+          <p>No Records To Display</p>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </main>
+
+  {% endblock %}
